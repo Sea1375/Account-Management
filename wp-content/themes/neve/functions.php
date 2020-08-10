@@ -79,3 +79,19 @@ require_once get_template_directory() . '/start.php';
 
 
 require_once get_template_directory() . '/header-footer-grid/loader.php';
+
+
+
+
+
+function aia_styles_scripts() {
+	$theme_path = get_stylesheet_directory_uri();
+	
+	if( is_page_template( 'page-templates/account.php' ) || is_page( 'Account' ) ) { 
+	   	wp_enqueue_style( 'intlTelInput', $theme_path .'/page-templates/build/css/intlTelInput.css', array( 'neve-style' ) );
+		wp_enqueue_script( 'intlTelInput-script', $theme_path . '/page-templates/build/js/intlTelInput.js', array( 'jquery' ) );
+		wp_enqueue_script( 'utils-script', $theme_path . '/page-templates/build/js/utils.js', array( 'intlTelInput-script' ) );	
+	}
+
+}
+add_action( 'wp_enqueue_scripts', 'aia_styles_scripts' );

@@ -1,26 +1,12 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "dbusneed2tellyou";
-    echo "Database";
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
+    include_once("../../../../wp-config.php");
+    global $wpdb;
+    
+    $sql = "SELECT * FROM country where  CTR_AVAILABLE = 'Y' ";
+    $results = $wpdb->get_results($sql);
+  
+    foreach( $results as $result) {
+        echo "<option value = '" . $result->CTR_CODE . "'>". $result->CTR_CODE ."</option>";
     }
-
-    $sql = "SELECT * FROM country where CTR_AVAILABLE = 'Y' ";
-    $result = mysqli_query($conn, $sql);
-
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<option>" . $row['CTR-DESC'] . "</option>";
-        }
-    } else {
-        echo "";
-    }
-
-    $conn->close();
+    
 ?>
