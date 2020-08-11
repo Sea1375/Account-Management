@@ -6,7 +6,7 @@
     $results = $wpdb->get_results($sql);
   
     foreach( $results as $result) {
-        echo "<option value = '" . $result->CTR_CODE . "'>". $result->CTR_CODE ."</option>";
+        echo "<option value = '" . $result->CTR_DESC . "'>". $result->CTR_DESC ."</option>";
     }
     
 ?>
