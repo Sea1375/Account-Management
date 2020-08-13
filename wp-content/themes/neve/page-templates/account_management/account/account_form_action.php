@@ -1,5 +1,5 @@
 <?php
-    include_once("../../../../wp-config.php");
+    include_once("../../../../../../wp-config.php");
     global $wpdb;
 
     $act_addressCheck = $_POST['addressCheck'];
@@ -26,8 +26,6 @@
         $act_email = $_POST['emailAddress'];
         $act_birth_year = $_POST['birthYear'];
         $act_phone = $_POST['mobileNumber'];
-
-        //echo $act_first_name . $act_last_name . $act_address_line1 . $act_address_line2 . $act_city . $act_state_province . $act_postal_code . $act_country . $act_email . $act_birth_year . $act_phone;
         
         $sql = "INSERT INTO account (ACT_FIRST_NAME, ACT_LAST_NAME, ACT_ADDRESS_LINE1, ACT_ADDRESS_LINE2, ACT_CITY, ACT_STATE_PROVINCE, ACT_POSTAL_CODE, ACT_COUNTRY, ACT_EMAIL, ACT_BIRTH_YEAR, ACT_PHONE, ACT_NOTIF_SMS, ACT_NOTIF_EMAIL, ACT_PULSE_CHECK_FREQ, ACT_AUTO_PULSE_CHECK, ACT_PLAN, ACT_CREATION_DATE) VALUES ('$act_first_name', '$act_last_name', '$act_address_line1', '$act_address_line2' , '$act_city', '$act_state_province', '$act_postal_code', '$act_country', '$act_email', '$act_birth_year', '$act_phone', '$act_notif_sms', '$act_notif_email', '$act_pulse_check_freq', '$act_auto', '$act_plan', CURRENT_TIMESTAMP)";
         $wpdb->query($sql);

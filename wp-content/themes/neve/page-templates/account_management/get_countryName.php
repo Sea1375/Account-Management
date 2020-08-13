@@ -1,5 +1,5 @@
 <?php
-    include_once("../../../../wp-config.php");
+    include_once("../../../../../wp-config.php");
     global $wpdb;
     
     $sql = "SELECT * FROM country where  CTR_AVAILABLE = 'Y' ";

@@ -87,10 +87,11 @@ require_once get_template_directory() . '/header-footer-grid/loader.php';
 function aia_styles_scripts() {
 	$theme_path = get_stylesheet_directory_uri();
 	
-	if( is_page_template( 'page-templates/account.php' ) || is_page( 'Account' ) ) { 
-	   	wp_enqueue_style( 'intlTelInput', $theme_path .'/page-templates/build/css/intlTelInput.css', array( 'neve-style' ) );
-		wp_enqueue_script( 'intlTelInput-script', $theme_path . '/page-templates/build/js/intlTelInput.js', array( 'jquery' ) );
-		wp_enqueue_script( 'utils-script', $theme_path . '/page-templates/build/js/utils.js', array( 'intlTelInput-script' ) );	
+	if( is_page_template( 'page-templates/account.php' ) || is_page( 'Account' ) || is_page_template( 'page-templates/contact.php' ) || is_page( 'Contacts' )) { 
+	   	wp_enqueue_style( 'intlTelInput', $theme_path .'/page-templates/account_management/build/css/intlTelInput.css', array( 'neve-style' ) );
+		wp_enqueue_style( 'home', $theme_path .'/page-templates/account_management/home.css', array( 'intlTelInput' ) );
+		wp_enqueue_script( 'intlTelInput-script', $theme_path . '/page-templates/account_management/build/js/intlTelInput.js', array( 'jquery' ) );
+		wp_enqueue_script( 'utils-script', $theme_path . '/page-templates/account_management/build/js/utils.js', array( 'intlTelInput-script' ) );
 	}
 
 }

@@ -35,7 +35,7 @@ if ( have_posts() ) {
     <div class="container mt-5 p-3">
         <h3 class="bg-success text-white p-2 text-center" style="font-family: 'Lobster', cursive;">My Account</h3>
         <!-- class="needs-validation" novalidate -->
-        <form action="action.php" method="POST" id="account" class="needs-validation">
+        <form action="account_form_action.php" method="POST" id="account" class="needs-validation">
 
             <input type="hidden" value="<?php  ?>" name="actPlan" />
             <input type='hidden' value='N' name='actAuto' />
@@ -267,7 +267,7 @@ if ( have_posts() ) {
     <script>
         getCountryName();
         function getCountryName() {
-            var request_url = $('#theme_url').val() + '/page-templates/get_countryName.php';
+            var request_url = $('#theme_url').val() + '/page-templates/account_management/get_countryName.php';
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
@@ -285,7 +285,7 @@ if ( have_posts() ) {
                 if(index == 1) $("input[name=actAuto]").val('Y');
 
                 e.preventDefault();
-                var currentUrl = $('#theme_url').val() + '/page-templates/' + $(this).attr('action');
+                var currentUrl = $('#theme_url').val() + '/page-templates/account_management/account/' + $(this).attr('action');
 
                 $.ajax({
                     url : currentUrl || window.location.pathname,
@@ -307,9 +307,10 @@ if ( have_posts() ) {
             'use strict';
             $.ajax({
                 type: "POST",
-                url: $('#theme_url').val() + '/page-templates/account_birthday.php',
-                data: $(this).serialize(),
+                url: $('#theme_url').val() + '/page-templates/account_management/account/account_birthday.php',
+                data: { country: $('input[name=country]').val()},
                 success:function(data){
+                    console.log(data);
                     $("input[name=birthYear]").attr({
                         "max" : data,        
                         "min" : 1880          
